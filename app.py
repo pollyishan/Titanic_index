@@ -32,7 +32,7 @@ def load_data() -> pd.DataFrame:
 df = load_data()
 
 def age_band(age: float) -> str:
-    if age <= 18: return "0-18"
+    if age < 18: return "0-18"
     if age < 25:  return "18-25"
     if age < 35:  return "25-35"
     if age < 45:  return "35-45"
@@ -40,22 +40,15 @@ def age_band(age: float) -> str:
     return "55+"
 
 def cohort(gender: str, age: float) -> str:
-    return "Дети" if age <= 18 else gender
+    return "Дети" if age < 18 else gender
 
-def class_by_budget_rub(budget: float, gap_policy: str) -> str:
+def class_by_budget_rub(budget: float) -> str:
     if budget < 100_000:
-        return "ниже 3-го класса"
+        return "Вы бы не смогли купить билет на Титаник"
     if budget < 230_000:
         return "3"
-    if budget < 400_000:
+    if budget < 499_000:
         return "2"
-    if budget < 500_000:
-        if gap_policy == "Отнести к 2-му классу":
-            return "2"
-        elif gap_policy == "Отнести к 1-му классу":
-            return "1"
-        else:
-            return "неопределён"
     return "1"
 
 st.title("🚢 Выжил бы ты на Титанике?")
@@ -104,7 +97,7 @@ if coef_val is not None:
 with st.expander("Пояснение"):
     st.write(
         "1) Ввод: пол, возраст и бюджет в рублях.\n"
-        "2) Класс по порогам: 3 кл. 100–230 тыс., 2 кл. 230–400 тыс., 1 кл. ≥500 тыс.; окно 400–499 тыс. настраивается.\n"
+        "2) Класс по порогам: 3 кл. 100–230 тыс., 2 кл. 230–499 тыс., 1 кл. ≥500 тыс.\n"
         "3) По (когорта, возрастной диапазон, класс) берём коэффициент из `model.csv`.\n"
         "4) Показываем в процентах и прогресс-баре."
     )
