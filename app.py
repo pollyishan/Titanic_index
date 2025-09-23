@@ -59,15 +59,11 @@ with st.sidebar:
     gender = st.selectbox("Пол", ["Женщины", "Мужчины"])
     age = st.number_input("Возраст (полных лет)", min_value=0, max_value=110, value=25, step=1)
     budget = st.number_input("Бюджет на билет (₽)", min_value=0, value=250_000, step=10_000, format="%i")
-    gap_policy = st.radio(
-        "Как трактовать окно 400–499 тыс. ₽?",
-        ["Неопределённо (показать N/A)", "Отнести к 2-му классу", "Отнести к 1-му классу"],
-        index=0
-    )
+
 
 band = age_band(age)
 coh = cohort(gender, age)
-klass = class_by_budget_rub(budget, gap_policy)
+klass = class_by_budget_rub(budget)
 
 st.subheader("Результат")
 col1, col2, col3 = st.columns(3)
