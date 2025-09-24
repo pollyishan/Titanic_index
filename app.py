@@ -61,9 +61,9 @@ st.caption("Пол → возраст → класс по бюджету → к�
 
 with st.sidebar:
     st.header("Ввод")
-    gender = st.selectbox("Пол", ["Женщины", "Мужчины"])
+    gender = st.selectbox("Пол", ["Женщина", "Мужчина"])
     age = st.number_input("Возраст (полных лет)", min_value=0, max_value=110, value=25, step=1)
-    budget = st.number_input("Бюджет на билет (₽)", min_value=0, value=250_000, step=10_000, format="%i")
+    budget = st.number_input("Сколько бы вы потратили на билет (в современных рублях)", min_value=0, value=250_000, step=10_000, format="%i")
 
 band = age_band(age)
 coh = cohort(gender, age)
