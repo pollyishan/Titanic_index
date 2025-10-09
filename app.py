@@ -34,12 +34,17 @@ def load_data() -> pd.DataFrame:
 df = load_data()
 
 def age_band(age: float) -> str:
-    # Границы включительно: 0–18, 18–25, 25–35, 35–45, 45–55, 55+
-    if age <= 18: return "0-18"
-    if age <= 25: return "18-25"
-    if age <= 35: return "25-35"
-    if age <= 45: return "35-45"
-    if age <= 55: return "45-55"
+    # 0–17, 18–25, 26–35, 36–45, 46–55, 56+
+    if age < 18:
+        return "0-18"      # дети до 18, не включая 18
+    if age <= 25:
+        return "18-25"
+    if age <= 35:
+        return "25-35"
+    if age <= 45:
+        return "35-45"
+    if age <= 55:
+        return "45-55"
     return "55+"
 
 def normalize_gender_label(g: str) -> str:
