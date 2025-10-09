@@ -55,7 +55,7 @@ def normalize_gender_label(g: str) -> str:
     return "Женщины"          # по умолчанию считаем 'женщины/женщина'
 
 def cohort(gender: str, age: float) -> str:
-    return "Дети" if age <= 18 else normalize_gender_label(gender)
+    return "Дети" if age_band(age) == "0-18" else normalize_gender_label(gender)
 
 def class_by_budget_rub(budget: float) -> str:
     # <100k — сообщение; 100–229999: 3; 230–499999: 2; >=500k: 1
