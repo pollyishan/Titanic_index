@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from pathlib import Path
 
-st.set_page_config(page_title="Выжил бы ты на Титанике?", page_icon="🚢", layout="centered")
+st.set_page_config(page_title="Выжили бы вы Титанике?", page_icon="🚢", layout="centered")
 
 # Показать ли тестовые кнопки (для отладки)
 SHOW_TESTS = False
@@ -68,8 +68,8 @@ def class_by_budget_rub(budget: float) -> str:
     return "1"
 
 # ===== UI =====
-st.title("🚢 Выжил бы ты на Титанике?")
-st.caption("Пол → возраст → класс по бюджету → коэффициент выживаемости из таблицы.")
+st.title("🚢 Выжили бы вы на Титанике?")
+st.caption("Считаем по полу, возрасту и стоимости билета.")
 
 with st.sidebar:
     st.header("Ввод")
